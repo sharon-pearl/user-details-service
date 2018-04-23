@@ -1,0 +1,9 @@
+server:
+  port: 10000
+database:
+  mongo:
+    userpref:
+      host: localhost
+      port: 27017
+      username: u$er
+      password: passw0rd
