@@ -8,7 +8,7 @@
 	<name>user-pref-service</name>
 	<packaging>jar</packaging>
 	<properties>
-		<java.version>9</java.version>
+		<java.version>1.8</java.version>
 		<start-class>com.pearlin.whatflix.user.pref.Main</start-class>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
@@ -21,18 +21,21 @@
 	</parent>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>mongodb-driver-sync</artifactId>
-			<version>3.7.0-rc0</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
 		</dependency>
 	</dependencies>
 	<build>
@@ -41,7 +44,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					 <jvmArguments>--add-modules java.xml.bind</jvmArguments>
 					<mainClass>com.pearlin.whatflix.user.pref.UserPreferenceServer</mainClass>
 				</configuration>
 				<executions>

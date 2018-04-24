@@ -2,14 +2,29 @@ package com.pearlin.whatflix.user.pref.mongo;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Document(collection = "user_preferences")
 public class UserEntity {
 
+	// TODO Implement Builder Pattern
+
+	@Id
 	private long userId;
+
+	@Field("preferred_languages")
 	private List<String> preferredLanguages;
+
+	@Field("favourite_actors")
 	private List<String> favActors;
+
+	@Field("favourite_directors")
 	private List<String> favDirectors;
-	private List<String> searchedActors;
-	private List<String> searchedDirectors;
+
+	@Field("searched")
+	private List<String> searched;
 
 	public UserEntity(long userId) {
 		this.userId = userId;
@@ -39,24 +54,22 @@ public class UserEntity {
 		this.favDirectors = favDirectors;
 	}
 
-	public List<String> getSearchedActors() {
-		return searchedActors;
+	public List<String> getSearched() {
+		return searched;
 	}
 
-	public void setSearchedActors(List<String> searchedActors) {
-		this.searchedActors = searchedActors;
-	}
-
-	public List<String> getSearchedDirectors() {
-		return searchedDirectors;
-	}
-
-	public void setSearchedDirectors(List<String> searchedDirectors) {
-		this.searchedDirectors = searchedDirectors;
+	public void setSearched(List<String> searched) {
+		this.searched = searched;
 	}
 
 	public long getUserId() {
 		return userId;
+	}
+
+	@Override
+	public String toString() {
+		return "UserEntity [userId=" + userId + ", preferredLanguages=" + preferredLanguages + ", favActors="
+				+ favActors + ", favDirectors=" + favDirectors + ", searched=" + searched + "]";
 	}
 
 }

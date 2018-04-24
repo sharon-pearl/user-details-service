@@ -1,12 +1,11 @@
 spring:
   main:
     web-environment: false
-    banner-mode: off
-migration.initial.file: migration.initial.user_preferences.json
-database:
-  mongo:
-    userpref:
+  data: 
+    mongodb: 
+      name: user_details
       host: localhost
       port: 27017
-      username: u$er
       password: passw0rd
+      username: u$er
+migration.initial.file: /migration/initial/user_preferences.json
