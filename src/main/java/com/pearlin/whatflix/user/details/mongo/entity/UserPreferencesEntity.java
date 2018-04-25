@@ -1,4 +1,4 @@
-package com.pearlin.whatflix.user.pref.mongo;
+package com.pearlin.whatflix.user.details.mongo.entity;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "user_preferences")
-public class UserEntity {
+public class UserPreferencesEntity {
 
 	// TODO Implement Builder Pattern
 
@@ -26,7 +26,7 @@ public class UserEntity {
 	@Field("searched")
 	private List<String> searched;
 
-	public UserEntity(long userId) {
+	public UserPreferencesEntity(long userId) {
 		this.userId = userId;
 	}
 
@@ -68,7 +68,7 @@ public class UserEntity {
 
 	@Override
 	public String toString() {
-		return "UserEntity [userId=" + userId + ", preferredLanguages=" + preferredLanguages + ", favActors="
+		return "UserPreferencesEntity [userId=" + userId + ", preferredLanguages=" + preferredLanguages + ", favActors="
 				+ favActors + ", favDirectors=" + favDirectors + ", searched=" + searched + "]";
 	}
 

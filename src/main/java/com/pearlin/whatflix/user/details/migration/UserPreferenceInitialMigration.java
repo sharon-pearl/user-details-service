@@ -1,4 +1,4 @@
-package com.pearlin.whatflix.user.pref.migration;
+package com.pearlin.whatflix.user.details.migration;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,7 +18,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.pearlin.whatflix.user.pref.mongo.UserEntity;
+import com.pearlin.whatflix.user.details.mongo.entity.UserPreferencesEntity;
+import com.pearlin.whatflix.user.details.mongo.repository.UserPreferencesRepository;
 
 @Component
 public class UserPreferenceInitialMigration {
@@ -27,7 +28,7 @@ public class UserPreferenceInitialMigration {
 	String fileName;
 
 	@Autowired
-	private MongoTemplate mongoTemplate;
+	private UserPreferencesRepository userPreferencesRepository;
 
 	private static final String PREFERRED_LANGUAGES = "preferred_languages";
 	private static final String FAVOURITE_ACTORS = "favourite_actors";
@@ -63,7 +64,7 @@ public class UserPreferenceInitialMigration {
 				Set<Entry<String, JsonElement>> user = obj.entrySet();
 				long userId = Long.parseLong(user.iterator().next().getKey());
 				JsonObject userPref = user.iterator().next().getValue().getAsJsonObject();
-				UserEntity entity = createUser(userId, getField(userPref, PREFERRED_LANGUAGES),
+				UserPreferencesEntity entity = createUser(userId, getField(userPref, PREFERRED_LANGUAGES),
 						getField(userPref, FAVOURITE_ACTORS), getField(userPref, FAVOURITE_DIRECTORS));
 				insertToMongo(entity);
 			});
@@ -83,18 +84,18 @@ public class UserPreferenceInitialMigration {
 		return field;
 	}
 
-	private UserEntity createUser(long userId, List<String> preferredLanguages, List<String> favActors,
+	private UserPreferencesEntity createUser(long userId, List<String> preferredLanguages, List<String> favActors,
 			List<String> favDirectors) {
-		UserEntity user = new UserEntity(userId);
+		UserPreferencesEntity user = new UserPreferencesEntity(userId);
 		user.setFavActors(favActors);
 		user.setFavDirectors(favDirectors);
 		user.setPreferredLanguages(preferredLanguages);
 		return user;
 	}
 
-	private void insertToMongo(UserEntity user) {
+	private void insertToMongo(UserPreferencesEntity user) {
 		try {
-			mongoTemplate.insert(user);
+			userPreferencesRepository.insert(user);
 		} catch (Exception e) {
 			logger.error("Error while inserting user to mongo" + user, e);
 		}

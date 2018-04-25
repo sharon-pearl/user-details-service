@@ -1,4 +1,4 @@
-package com.pearlin.whatflix.user.pref.mongo;
+package com.pearlin.whatflix.user.details.mongo;
 
 import java.util.Collections;
 import java.util.List;
@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
@@ -15,6 +16,7 @@ import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 
 @Configuration
+@EnableMongoRepositories({ "com.pearlin.whatflix.user.details.mongo" })
 public class MongoConfig extends AbstractMongoConfiguration {
 
 	@Value("${spring.data.mongodb.name}")
