@@ -19,6 +19,7 @@ public class UserPreferencesService {
 	public UserPreferencesEntity getUserPreferencesEntity(long userId) {
 		UserPreferencesEntity entity = null;
 		try {
+			//TODO Project only required
 			entity = userPreferencesRepository.findById(userId).get();
 		} catch (Exception e) {
 			logger.error("Error while finding user preference data for" + userId, e);

@@ -2,14 +2,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>user-pref-service</groupId>
-	<artifactId>user-pref-service</artifactId>
+	<groupId>user-details-service</groupId>
+	<artifactId>user-details-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>user-pref-service</name>
+	<name>user-details-service</name>
 	<packaging>jar</packaging>
 	<properties>
 		<java.version>1.8</java.version>
-		<start-class>com.pearlin.whatflix.user.pref.Main</start-class>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 	</properties>
@@ -48,8 +47,7 @@
 				</configuration>
 				<executions>
 					<execution>
-						<!-- Spring Boot Actuator displays build-related information if a META-INF/build-info.properties 
-							file is present -->
+						<id>server</id>
 						<goals>
 							<goal>build-info</goal>
 						</goals>
@@ -68,7 +66,7 @@
 	</build>
 	<repositories>
 		<repository>
-			<id>mongo</id>
+			<id>maven</id>
 			<url>https://mvnrepository.com/artifact/</url>
 		</repository>
 		<repository>
@@ -82,7 +80,7 @@
 			<url>https://repo.spring.io/milestone/</url>
 		</pluginRepository>
 		<pluginRepository>
-			<id>mongo</id>
+			<id>maven</id>
 			<url>https://mvnrepository.com/artifact/</url>
 		</pluginRepository>
 	</pluginRepositories>
