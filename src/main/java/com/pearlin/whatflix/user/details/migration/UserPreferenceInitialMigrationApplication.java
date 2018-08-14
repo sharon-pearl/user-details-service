@@ -32,6 +32,6 @@ public class UserPreferenceInitialMigrationApplication {
 			logger.info("User Preference Migration Unsuccessful");
 		}
 		long end = System.currentTimeMillis();
-		System.out.println("Time taken in seconds : " + (end - start) / 1000);
+		logger.info("Time taken in seconds : " + (end - start) / 1000);
 	}
 }

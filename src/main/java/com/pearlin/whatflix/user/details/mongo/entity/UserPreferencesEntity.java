@@ -25,6 +25,9 @@ public class UserPreferencesEntity {
 
 	@Field("searched")
 	private List<String> searched;
+	
+	public UserPreferencesEntity() {
+	}
 
 	public UserPreferencesEntity(long userId) {
 		this.userId = userId;

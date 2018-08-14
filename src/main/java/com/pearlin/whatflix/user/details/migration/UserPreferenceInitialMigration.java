@@ -50,7 +50,9 @@ public class UserPreferenceInitialMigration {
 	private JsonElement readJsonFile() throws Exception {
 		ClassPathResource jsonFile = new ClassPathResource(fileName);
 		JsonParser parser = new JsonParser();
-		JsonElement data = parser.parse(new String(jsonFile.getInputStream().readAllBytes()));
+		byte[] b = new byte[100000];
+		jsonFile.getInputStream().read(b);		
+		JsonElement data = parser.parse(new String(b));
 		return data;
 	}
 
